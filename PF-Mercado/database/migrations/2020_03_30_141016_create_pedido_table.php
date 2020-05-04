@@ -17,8 +17,6 @@ class CreatePedidoTable extends Migration
             $table->increments('idPedido');
             $table->unsignedInteger('idUsu');
             $table->unsignedInteger('idProPues');
-            $table->unsignedInteger('idDir');
-            $table->unsignedInteger('idTarjeta');
             $table->integer('cantidad');
             $table->integer('peso');
             $table->boolean('pagado');
@@ -28,7 +26,7 @@ class CreatePedidoTable extends Migration
 
         Schema::table('pedido', function (Blueprint $table) {
             $table->foreign('idUsu')->references('idUsu')
-                ->on('usuario')
+                ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -39,21 +37,6 @@ class CreatePedidoTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
-
-        Schema::table('pedido', function (Blueprint $table) {
-            $table->foreign('idDir')->references('idDir')
-                ->on('direccion')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
-
-        Schema::table('pedido', function (Blueprint $table) {
-            $table->foreign('idTarjeta')->references('idTarjeta')
-                ->on('tarjeta')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
-
     }
 
     /**

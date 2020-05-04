@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB ;
 
-class productoPuestoTableSeeder extends Seeder
+class ProductoPuestoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,6 +20,7 @@ class productoPuestoTableSeeder extends Seeder
                 array_push($data, [
                     'idPuesto'   => $i,
                     'idPro'      => $faker->numberBetween(1,30),
+                    'descripcion'=> $faker->text($maxNbChars = 200),
                     'precio'     => $faker->randomFloat($min = 0.50, $max = NULL),
                     'stock'  	 => $faker->boolean,
                 ]) ;

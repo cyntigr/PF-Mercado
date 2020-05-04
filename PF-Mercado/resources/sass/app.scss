@@ -1,8 +1,56 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'navbar.scss';
+
+@import 'cuerpo.scss';
+
+@media (min-width: 400px) {
+    .navbar-expand-md {
+      flex-flow: row nowrap !important;
+      justify-content: flex-start !important;
+    }
+  
+    .navbar-expand-md .navbar-nav {
+      flex-direction: row !important;
+    }
+  
+    .navbar-expand-md .navbar-nav .dropdown-menu {
+      position: absolute !important;
+    }
+  
+    .navbar-expand-md .navbar-nav .nav-link {
+      padding-right: 0.5rem !important;
+      padding-left: 0.5rem !important;
+    }
+  
+    .navbar-expand-md > .container,
+    .navbar-expand-md > .container-fluid,
+    .navbar-expand-md > .container-sm,
+    .navbar-expand-md > .container-md,
+    .navbar-expand-md > .container-lg,
+    .navbar-expand-md > .container-xl {
+      flex-wrap: nowrap !important;
+    }
+  
+    .navbar-expand-md .navbar-collapse {
+      display: flex !important;
+      flex-basis: auto !important;
+    }
+  
+    .navbar-expand-md .navbar-toggler {
+      display: none !important;
+    }
+  }
+
+  .navbar-expand-md > .container,
+    .navbar-expand-md > .container-fluid,
+    .navbar-expand-md > .container-sm,
+    .navbar-expand-md > .container-md,
+    .navbar-expand-md > .container-lg,
+    .navbar-expand-md > .container-xl {
+      flex-wrap: nowrap !important;
+    }

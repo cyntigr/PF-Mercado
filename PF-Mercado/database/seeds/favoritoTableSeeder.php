@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB ;
 
-class favoritoTableSeeder extends Seeder
+class FavoritoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
