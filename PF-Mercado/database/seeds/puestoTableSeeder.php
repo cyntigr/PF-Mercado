@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB ;
 
-class puestoTableSeeder extends Seeder
+class PuestoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,17 +12,14 @@ class puestoTableSeeder extends Seeder
      */
     public function run()
     {
-        $table->unsignedInteger('idUsu');
-        $table->string('foto',255);
-        $table->string('telefono',9);
-        $table->string('info',300);
 
         $faker = Faker\Factory::create() ;
             // Create data collection
             $data = [] ;
-            for($i=1; $i <= 50; $i++){
+            for($i=1; $i <= 15; $i++){
                 array_push($data, [
-                    'idUsu'    => $faker->word(),
+                    'idUsu'    => $faker->numberBetween(1, 5),
+                    'nombre'   => $faker->company(),
                     'foto'     => "puesto.jpg",
                     'telefono' => $faker->numberBetween(600000000, 699999999),
                     'info'     => $faker->text($maxNbChars = 300)          

@@ -15,6 +15,7 @@ class CreatePuestoTable extends Migration
     {
         Schema::create('puesto', function (Blueprint $table) {
             $table->increments('idPuesto');
+            $table->string('nombre',150);
             $table->unsignedInteger('idUsu');
             $table->string('foto',255);
             $table->string('telefono',9);
@@ -24,7 +25,7 @@ class CreatePuestoTable extends Migration
 
         Schema::table('puesto', function(Blueprint $table) {
             $table->foreign('idUsu')->references('idUsu')
-                ->on('usuario')
+                ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

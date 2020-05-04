@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB ;
 
-class pedidoTableSeeder extends Seeder
+class PedidoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,12 +20,10 @@ class pedidoTableSeeder extends Seeder
                 array_push($data, [
                     'idUsu'         => $i,
                     'idProPues' 	=> $faker->numberBetween(1,20),
-                    'idDir'         => $faker->numberBetween(1,3),
-                    'idTarjeta'     => $faker->numberBetween(1,2),
                     'cantidad'  	=> $faker->numberBetween(1,3),
                     'peso'          => $faker->randomElement($array = array (1000,500,250,100)),
                     'pagado'        => $faker->boolean,
-                    'fecha'         => $faker->$faker->date('Y-m-d')
+                    'fecha'         => $faker->date('Y-m-d')
                 ]) ;
             }
         }

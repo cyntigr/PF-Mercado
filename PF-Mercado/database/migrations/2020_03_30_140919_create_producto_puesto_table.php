@@ -17,6 +17,7 @@ class CreateProductoPuestoTable extends Migration
             $table->increments('idProPues');
             $table->unsignedInteger('idPuesto');
             $table->unsignedInteger('idPro');
+            $table->string('descripcion',200);
             $table->double('precio');
             $table->boolean('stock');
             $table->timestamps();

@@ -1,0 +1,46 @@
+.nav-mercado{
+    background-color: $yellow !important;
+}
+
+.logo{
+    width: 7%;
+}
+
+@media (max-width: 500px) {
+    .logo{
+        width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo{
+        width: 30%;
+    }
+}
+
+@media (max-width: 996px) {
+    .logo{
+        width: 10%;
+    }
+}
+
+.container.menu{
+    width: 100%;
+    padding-right: 0px !important;
+    padding-left: 15px;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+#navbarSupportedContent{
+    padding-right: 1em;
+    padding-left: 3em;
+    font-size: 16px;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: white !important;
+}
+.cart{
+    width: 30px;
+}
+    
