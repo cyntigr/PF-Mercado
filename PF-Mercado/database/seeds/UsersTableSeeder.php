@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        $faker = Faker\Factory::create() ;
+        $faker = Faker\Factory::create('es_ES');
         // Create data collection
         $data = [] ;
         
@@ -20,12 +20,15 @@ class UsersTableSeeder extends Seeder
                 $numero = $faker->randomNumber($nbDigits = 8, $strict = true) 
                 . $faker->randomNumber($nbDigits = 8, $strict = true);
                 $dni = $faker->numberBetween(10000000, 99999999).$faker->randomLetter ();
+                $nif = $faker->numberBetween(10000000, 99999999).$faker->randomLetter ();
                 array_push($data, [
                     'nombre' 	         => $faker->name(),
                     'apellido'           => $faker->lastName(),
+                    'dni'                => $dni,
                     'email'              => $faker->freeEmail(),
                     'password'           => Hash::make('12345cya'),
                     'telefono'           => $faker->numberBetween(600000000, 699999999),
+                    'fecNac'             => $faker->date(),
                     'idTipo'             => '3',
                     'vendedor'           => $faker->boolean(),
                     'direccion'          => $faker->address(),
@@ -33,10 +36,10 @@ class UsersTableSeeder extends Seeder
                     'caducidad'          => '05/2021',
                     'cvc'                => $faker->numberBetween(100, 999),
                     'foto'               => 'user.jpg',
-                    'nif'                => $dni,
+                    'nif'                => $nif,
                 ]) ;
         }
         // Insertamos los datos en la base de datos
-        DB::table('users')->insert($data) ;
+        DB::table('user')->insert($data) ;
     }
 }

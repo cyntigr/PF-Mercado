@@ -13,7 +13,7 @@ class PuestoTableSeeder extends Seeder
     public function run()
     {
 
-        $faker = Faker\Factory::create() ;
+        $faker = Faker\Factory::create('es_ES') ;
             // Create data collection
             $data = [] ;
             for($i=1; $i <= 15; $i++){

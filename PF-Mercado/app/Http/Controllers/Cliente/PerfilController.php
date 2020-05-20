@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Http\Controllers\Cliente;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class PerfilController extends Controller
+{
+    /**
+     * View Perfil user
+     * @return view perfil
+     */
+    public function vista(Request $req){
+    	return view('cliente/perfil') ;
+    }
+
+
+    /**
+     * 
+     * Edit user with new params.
+     * @param user
+     * @return view perfil
+     * 
+     */
+    public function edit(Request $req){
+        $req->validate([
+            'name'      => ['required', 'string', 'max:255'],
+            'apellido'  => ['required', 'string', 'max:255'],
+            'direccion' => ['required', 'string', 'max:300'],
+            'telefono'  => ['required', 'string', 'size:9'],
+            'tarjeta'   => ['numeric','max:12341234123412341'],
+            'caducidad' => ['string','max:7'],
+            'cvc'       => ['numeric','max:1234'],
+            'foto'      => ['image','mimes:jpeg,bmp,png'],
+         ]) ;
+
+        $user = Auth::user();
+        $user->nombre    =  $req->input('name') ;
+        $user->apellido  =  $req->input('apellido') ;
+        $user->direccion =  $req->input('direccion') ;
+        $user->telefono  =  $req->input('telefono') ;
+        $user->tarjeta   =  $req->input('tarjeta') ;
+        $user->caducidad =  $req->input('caducidad') ;
+        $user->cvc       =  $req->input('cvc') ;
+        if($req->file('foto') == ''){
+            $user->foto  =  Auth::user()->foto ;
+        }else{
+            $name = Auth::user()->dni.'.'.$req->file('foto')->extension();
+            $req->file('foto')->storeAs('public',$name);
+            $user->foto  =  $name;
+        }
+    	$user->save() ;
+    	 
+    	return redirect()->route('perfil') ;
+    }
+
+
+    /**
+     * Delete user of database
+     * @return view home
+     * 
+     */
+
+     public function delete(){
+        $user = Auth::user();
+        $user->delete();
+    	return redirect()->route('home') ;
+     }
+}
