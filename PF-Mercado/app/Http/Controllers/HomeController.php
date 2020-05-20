@@ -2,8 +2,18 @@
 
 namespace App\Http\Controllers;
 
+/**
+ * 
+ * Cyntia García Ruiz
+ * 2º DAW
+ * Curso 2019/20
+ * 
+ */
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Puesto;
+use Illuminate\Support\Facades\DB ;
 
 class HomeController extends Controller
 {
@@ -17,20 +27,20 @@ class HomeController extends Controller
         
     }
 
+    public function indexWelcome()
+    {
+        return view('welcome');
+    }
+
+    
     /**
-     * Show the application dashboard.
+     * Show the first page for the application
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        if(Auth::user())
-            return view('home');
-        return view('auth/login');
-    }
-
-    public function indexWelcome()
-    {
-        return view('welcome');
+        $puestos = DB::table('puesto')->paginate(8);
+        return view('home', ['puestos' => $puestos]) ;
     }
 }

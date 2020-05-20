@@ -1,18 +1,11 @@
 #video{
     width: 100%;
-	position: absolute;
-}
-#capaFondo{
-    width: 100%;
-    height: 759px;
     position: absolute;
-    background-color: rgba(160, 16, 40, 0.521);
+    opacity: 0.8;
 }
+
 .transparent{
     background-color: rgba(255, 255, 255, 0.7) !important;
-}
-.card{
-    color:$red !important;
 }
 
 body{
@@ -21,5 +14,72 @@ body{
 
 .container.py-4{
     padding-bottom: 0px !important;
+    height: 100% !important;
+    align-items: center !important;
+
 }
 
+.fondo{
+    width: 100%;
+    min-height: 545px;
+    background-color: whitesmoke;
+}
+
+p.card-text{
+    overflow:hidden;
+    height: 53px;
+}
+
+.row.puesto{
+    justify-content: space-between;
+    
+}
+
+@media (max-width: 529px) {
+    .row.puesto{
+        justify-content: center;
+    }
+}
+.nav-mercado.navbar{
+    box-shadow: 0 0.225rem 0.5rem rgba(0, 0, 0, 0.4) !important;
+}
+
+.card{
+    box-shadow: 0 0.125rem 0.2rem rgba(0, 0, 0, 0.2) !important;
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
+    color:$red !important;
+}
+
+.logoM{
+    width: 100px;
+}
+.card.producto{
+    width: 13rem;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.row.producto{
+    justify-content: space-between;
+}
+
+.card-img-top.perfil{
+    max-height: 29rem;
+}
+
+.card-title a{
+    color:$yellow;
+}
+
+a.page-link{
+    color: $yellow !important;
+}
+
+.active span.page-link{
+    background-color: $yellow !important;
+    border-color: $yellow !important;
+}
+
+.center{
+    margin: auto;
+}

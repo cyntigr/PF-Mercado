@@ -12,14 +12,15 @@ class ProductoPuestoTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create() ;
+        $faker = Faker\Factory::create('es_ES') ;
         // Create data collection
         $data = [] ;
         for($i=1; $i <= 10; $i++){
             for($p=1; $p <= 15; $p++){
                 array_push($data, [
                     'idPuesto'   => $i,
-                    'idPro'      => $faker->numberBetween(1,30),
+                    'nombre'     => $faker->word(),
+                    'foto'       => "ejemplo.jpg",
                     'descripcion'=> $faker->text($maxNbChars = 200),
                     'precio'     => $faker->randomFloat($min = 0.50, $max = NULL),
                     'stock'  	 => $faker->boolean,

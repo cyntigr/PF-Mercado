@@ -20,7 +20,7 @@ class CreateFavoritoTable extends Migration
 
         Schema::table('favorito', function (Blueprint $table) {
             $table->foreign('idUsu')->references('idUsu')
-                ->on('users')
+                ->on('user')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

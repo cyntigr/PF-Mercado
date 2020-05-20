@@ -25,7 +25,7 @@ class CreatePuestoTable extends Migration
 
         Schema::table('puesto', function(Blueprint $table) {
             $table->foreign('idUsu')->references('idUsu')
-                ->on('users')
+                ->on('user')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
