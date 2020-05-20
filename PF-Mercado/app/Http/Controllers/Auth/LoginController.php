@@ -45,6 +45,6 @@ class LoginController extends Controller
     {
         $this->doLogout($request);
 
-         return redirect()->route('welcome');
+         return redirect()->route('home');
     }
 }

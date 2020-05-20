@@ -16,7 +16,8 @@ class CreateProductoPuestoTable extends Migration
         Schema::create('producto_puesto', function (Blueprint $table) {
             $table->increments('idProPues');
             $table->unsignedInteger('idPuesto');
-            $table->unsignedInteger('idPro');
+            $table->string('nombre',255);
+            $table->string('foto',255);
             $table->string('descripcion',200);
             $table->double('precio');
             $table->boolean('stock');
@@ -26,13 +27,6 @@ class CreateProductoPuestoTable extends Migration
         Schema::table('producto_puesto', function (Blueprint $table){
             $table->foreign('idPuesto')->references('idPuesto')
                 ->on('puesto')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
-
-        Schema::table('producto_puesto', function (Blueprint $table){
-            $table->foreign('idPro')->references('idPro')
-                ->on('producto')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

@@ -3,24 +3,30 @@
 }
 
 .logo{
-    width: 7%;
+    width: 10%;
+}
+
+@media (max-width: 996px) {
+  .logo{
+      width: 13%;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo{
+      width: 16%;
+  }
+}
+
+@media (max-width: 685px) {
+  .watch{
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
     .logo{
-        width: 40%;
-    }
-}
-
-@media (max-width: 768px) {
-    .logo{
-        width: 30%;
-    }
-}
-
-@media (max-width: 996px) {
-    .logo{
-        width: 10%;
+        width: 20%;
     }
 }
 
@@ -33,7 +39,7 @@
 }
 #navbarSupportedContent{
     padding-right: 1em;
-    padding-left: 3em;
+    padding-left: 1em;
     font-size: 16px;
 }
 
@@ -41,6 +47,70 @@
     color: white !important;
 }
 .cart{
-    width: 30px;
+    width: 20px;
+    position: absolute;
 }
-    
+
+
+@media (min-width: 400px) {
+    .navbar-expand-md {
+      flex-flow: row nowrap !important;
+      justify-content: flex-start !important;
+    }
+  
+    .navbar-expand-md .navbar-nav {
+      flex-direction: row !important;
+    }
+  
+    .navbar-expand-md .navbar-nav .dropdown-menu {
+      position: absolute !important;
+    }
+  
+    .navbar-expand-md .navbar-nav .nav-link {
+      padding-right: 0.5rem !important;
+      padding-left: 0.5rem !important;
+    }
+  
+    .navbar-expand-md > .container,
+    .navbar-expand-md > .container-fluid,
+    .navbar-expand-md > .container-sm,
+    .navbar-expand-md > .container-md,
+    .navbar-expand-md > .container-lg,
+    .navbar-expand-md > .container-xl {
+      flex-wrap: nowrap !important;
+    }
+  
+    .navbar-expand-md .navbar-collapse {
+      display: flex !important;
+      flex-basis: auto !important;
+    }
+  
+    .navbar-expand-md .navbar-toggler {
+      display: none !important;
+    }
+  }
+
+  .navbar-expand-md > .container,
+    .navbar-expand-md > .container-fluid,
+    .navbar-expand-md > .container-sm,
+    .navbar-expand-md > .container-md,
+    .navbar-expand-md > .container-lg,
+    .navbar-expand-md > .container-xl {
+      flex-wrap: nowrap !important;
+    }
+
+  .nav.nav-mercado.navbar.navbar-expand-md.navbar-light.bg-black {
+      padding-left: 1.5rem;
+  }
+
+  .imgPerfil{
+    width: 50px; 
+    height:50px;
+    margin-left:5px;
+    border-radius: 36px !important;
+    overflow: hidden;
+  }
+
+li img{
+    width: 100%;
+}

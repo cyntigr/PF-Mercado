@@ -5,30 +5,40 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable 
+{ 
+
     use Notifiable;
 
-    
+    /**
+     * 
+     * Types of user in database
+     */
     private const ADMIN  = 1;
     private const SELLER = 2;
     private const CLIENT = 3;
 
-    // Array of type user and path 
-    //private const PERFILES = ['', 'administrador', 'vendedor','cliente'] ;
-    //private const RUTAS    = ['', 'admin', 'seller','client'] ;
-    
+
+    /**
+     * Name of table
+     */
+    protected $table = 'user' ;
+
+    /**
+     * Primary key of table
+     */
     protected $primaryKey = 'idUsu' ;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-
     
     protected $fillable = [
-        'nombre','apellido', 'email', 'password','telefono','idTipo','foto','nif'
+        'nombre','apellido', 'email', 'dni', 'password','telefono','idTipo', 'vendedor', 'direccion', 'fecNac', 'foto','nif'
     ];
 
     /**
@@ -54,10 +64,31 @@ class User extends Authenticatable
      * 
      * @return boolean
      */
-    public function isAdmin()
+    public function esAdministrador():boolean
     {
         return $this->tipo == User::ADMIN ;
     }
+
+    /**
+     * Check if the user is seller
+     * 
+     * @return boolean
+     */
+    public function esVendedor():boolean
+    {
+        return $this->tipo == User::SELLER ;
+    }
+
+    /**
+     * Check if the user is client
+     * 
+     * @return boolean
+     */
+    public function esCliente():boolean
+    {
+        return $this->tipo == User::CLIENT ;
+    }
+
 
     /**
      * Return the route for the tipe indicated
@@ -68,5 +99,15 @@ class User extends Authenticatable
     {
         return User::PATHS[$this->tipo] ;
     }
-    
+
+    /**
+    * Send the password reset notification.
+    *
+    * @param  string  $token
+    * @return void
+    */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
 }

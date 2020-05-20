@@ -26,7 +26,7 @@ class CreatePedidoTable extends Migration
 
         Schema::table('pedido', function (Blueprint $table) {
             $table->foreign('idUsu')->references('idUsu')
-                ->on('users')
+                ->on('user')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
