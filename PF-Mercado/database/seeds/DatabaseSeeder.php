@@ -16,8 +16,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             PuestoTableSeeder::class,
             ProductoPuestoTableSeeder::class,
-            PedidoTableSeeder::class,
-            FavoritoTableSeeder::class
+            PedidoTableSeeder::class
         ]);
     }
 }

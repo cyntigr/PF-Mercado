@@ -15,7 +15,23 @@ class UsersTableSeeder extends Seeder
         $faker = Faker\Factory::create('es_ES');
         // Create data collection
         $data = [] ;
-        
+        array_push($data, [
+            'nombre' 	         => $faker->name(),
+            'apellido'           => $faker->lastName(),
+            'dni'                => '74740147Z',
+            'email'              => 'cyntigr@gmail.com',
+            'password'           => Hash::make('12345cya'),
+            'telefono'           => '661121633',
+            'fecNac'             => $faker->date(),
+            'idTipo'             => '1',
+            'vendedor'           => false,
+            'direccion'          => $faker->address(),
+            'tarjeta'            => null,
+            'caducidad'          => null,
+            'cvc'                => null,
+            'foto'               => 'user.jpg',
+            'nif'                => null,
+        ]) ;
         for($i=1; $i <= 5; $i++){
                 $numero = $faker->randomNumber($nbDigits = 8, $strict = true) 
                 . $faker->randomNumber($nbDigits = 8, $strict = true);

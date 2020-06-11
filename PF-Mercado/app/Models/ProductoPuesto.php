@@ -18,4 +18,14 @@ class ProductoPuesto extends Model
 
    public $timestamps = false ;
 
+   /**
+     * The attributes that are mass assignable, for create the class.
+     *
+     * @var array
+     */
+    
+    protected $fillable = [
+        'idPuesto', 'nombre', 'foto', 'descripcion','precio', 'stock',
+    ];
+
 }

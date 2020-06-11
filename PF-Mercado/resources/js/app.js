@@ -24,6 +24,7 @@ Vue.use(BootstrapVue);
 Vue.component('password', require('./components/Password.vue').default);
 Vue.component('email', require('./components/Email.vue').default);
 Vue.component('dni', require('./components/DNI.vue').default);
+Vue.component('buscador', require('./components/Buscador.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

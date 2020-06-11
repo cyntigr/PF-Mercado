@@ -11,8 +11,8 @@ namespace App\Http\Controllers;
  */
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Puesto;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB ;
 
 class HomeController extends Controller
@@ -41,6 +41,11 @@ class HomeController extends Controller
     public function index()
     {
         $puestos = DB::table('puesto')->paginate(8);
-        return view('home', ['puestos' => $puestos]) ;
+        if(Auth::guest()){
+            return view('home', ['puestos' => $puestos]) ;
+        }else{
+            $user = Auth::user();
+            return view('home', ['puestos' => $puestos,'cesta' => $user->shoppingBasket()]) ;
+        }
     }
 }

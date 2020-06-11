@@ -11014,19 +11014,23 @@ a.text-dark:focus {
   background-color: #e86b00 !important;
 }
 
+a.small {
+  width: 130px;
+}
+
 .logo {
-  width: 10%;
+  width: 90%;
 }
 
 @media (max-width: 996px) {
   .logo {
-    width: 13%;
+    width: 90%;
   }
 }
 
 @media (max-width: 768px) {
   .logo {
-    width: 16%;
+    width: 90%;
   }
 }
 
@@ -11038,7 +11042,7 @@ a.text-dark:focus {
 
 @media (max-width: 500px) {
   .logo {
-    width: 20%;
+    width: 90%;
   }
 }
 
@@ -11213,6 +11217,54 @@ a.page-link {
 
 .center {
   margin: auto;
+}
+
+.col-md-4.align-self-center {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.count {
+  margin-left: 1.5em;
+}
+
+a.blanco {
+  color: white !important;
+  text-decoration: none;
+}
+
+a.blanco:hover {
+  text-decoration: none;
+}
+
+.imgPedido {
+  width: 10rem !important;
+}
+
+a.rojo {
+  color: #A01027 !important;
+  text-decoration: none;
+}
+
+a.naranja {
+  color: #e86b00 !important;
+  text-decoration: none;
+}
+
+#inputTotal {
+  width: 10rem !important;
+}
+
+.error {
+  width: 50%;
+}
+
+body.error-404 {
+  background-color: #ffffff;
+}
+
+.row.move {
+  margin-left: 10rem !important;
 }
 
 .fotoPerfil {

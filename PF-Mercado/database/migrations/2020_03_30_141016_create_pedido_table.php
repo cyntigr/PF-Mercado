@@ -20,7 +20,9 @@ class CreatePedidoTable extends Migration
             $table->integer('cantidad');
             $table->integer('peso');
             $table->boolean('pagado');
-            $table->timestamp('fecha');
+            $table->timestamp('fecha')->nullable();
+            $table->boolean('enviado');
+            $table->double('total')->nullable();
             $table->timestamps();
         });
 

@@ -17,7 +17,7 @@ class Puesto extends Model
    /**
     * Name of table
     **/
-   protected $table = 'Puesto' ;
+   protected $table = 'puesto' ;
 
    /**
     * Primary key
@@ -27,12 +27,13 @@ class Puesto extends Model
    public $timestamps = false ;
 
    /**
-    * Relation 1:N (one to many) 
-    * 
-    * @return Illuminate\Database\Eloquent\Collection
-    */
-   public function puesto()
-   {
-       return $this->hasMany('App\Models\User') ;
-   }
+     * The attributes that are mass assignable, for create the class.
+     *
+     * @var array
+     */
+    
+    protected $fillable = [
+        'nombre', 'idUsu', 'foto', 'telefono','info',
+    ];
+
 }

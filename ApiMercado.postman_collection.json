@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "2894cd6b-a385-4d8c-9e60-9755ce9ae9a0",
+		"name": "ApiMercado",
+		"description": "This is my api for aplication Mercado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/productos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "cyntigr@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/productos",
+					"protocol": "http",
+					"host": [
+						"elmercado",
+						"eu-west-3",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"productos"
+					]
+				},
+				"description": "All products of the market"
+			},
+			"response": []
+		},
+		{
+			"name": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/puestos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "cyntigr@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/puestos",
+					"protocol": "http",
+					"host": [
+						"elmercado",
+						"eu-west-3",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"puestos"
+					]
+				},
+				"description": "All market stall of the market"
+			},
+			"response": []
+		},
+		{
+			"name": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/puesto/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/puesto/{id}",
+					"protocol": "http",
+					"host": [
+						"elmercado",
+						"eu-west-3",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"puesto",
+						"{id}"
+					]
+				},
+				"description": "One market stall of the market, find for id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/producto{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/producto{id}",
+					"protocol": "http",
+					"host": [
+						"elmercado",
+						"eu-west-3",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"producto{id}"
+					]
+				},
+				"description": "One producto of the market, find for id "
+			},
+			"response": []
+		},
+		{
+			"name": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/search/{search}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/search/{search}",
+					"protocol": "http",
+					"host": [
+						"elmercado",
+						"eu-west-3",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"search",
+						"{search}"
+					]
+				},
+				"description": "Search market stall "
+			},
+			"response": []
+		},
+		{
+			"name": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/dni/{dni}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/dni/{dni}",
+					"protocol": "http",
+					"host": [
+						"elmercado",
+						"eu-west-3",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"dni",
+						"{dni}"
+					]
+				},
+				"description": "Search dni of user in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/email/{correo}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://elmercado.eu-west-3.elasticbeanstalk.com/api/email/{correo}",
+					"protocol": "http",
+					"host": [
+						"elmercado",
+						"eu-west-3",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"email",
+						"{correo}"
+					]
+				},
+				"description": "Search email "
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

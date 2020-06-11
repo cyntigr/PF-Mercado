@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Http\Controllers\Puesto;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Puesto ;
+use App\Models\Favorito ;
+use App\Models\ProductoPuesto ;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB ;
+
+class PuestoController extends Controller
+{
+
+    /**
+     * Redirect to view puesto
+     * 
+     * @return puesto selected to visualize
+     * @return productos in the stall
+     * @return cesta count of pending orders
+     */
+    public function view(Request $req){
+        if (!$req->has('id'))
+            return redirect()->route('home') ;
+
+        $id        = $req->input('id');
+        $puesto    = Puesto::where('idPuesto',$id)->first() ;
+        $productos = ProductoPuesto::where('idPuesto',$id)->get();
+        if(!Auth::guest()){
+            $user = Auth::user();
+            return view('cliente/puesto', ['puesto' => $puesto ,'productos' => $productos,'cesta' => $user->shoppingBasket()]);
+        }
+        return view('cliente/puesto', ['puesto' => $puesto ,'productos' => $productos]);
+    }
+
+
+    /**
+     * 
+     * Search of market stall
+     * 
+     * @return view home
+     */
+    public function searchMarketStall(Request $req){
+
+        $puestos = Puesto::where('nombre','like', '%' . $req->input('buscador') . '%')->paginate(8);
+        if(Auth::guest()){
+            return view('home', ['puestos' => $puestos]) ;
+        }else{
+            $user = Auth::user();
+            return view('home', ['puestos' => $puestos,'cesta' => $user->shoppingBasket()]) ;
+        }
+    }
+
+
+    /**
+     * 
+     *  Add market stall as a favorite
+     * @return view
+     */
+    public function favorito(Request $req){
+        $id = $req->input('id');
+        $esta = DB::table('favorito')
+                ->where('idUsu',Auth::user()->idUsu)
+                ->where('idPuesto',$id)
+                ->first();
+                
+        if(empty($esta))
+            Favorito::create([
+                'idUsu'     => Auth::user()->idUsu,
+                'idPuesto'  => $id,
+            ]);
+        
+        return redirect()->route('puesto',['id' => $id]);
+    }
+
+     /**
+     * 
+     *  Add market stall as a favorite
+     * @return view
+     */
+    public function deleteFavorito(Request $req){
+        $id = $req->input('id');
+        DB::table('favorito')
+            ->where('idUsu',Auth::user()->idUsu)
+            ->where('idPuesto',$id)
+            ->delete();
+
+        return redirect()->route('puesto',['id' => $id]);
+    }
+
+
+    /**
+     * Shows the favourite market stall of the user
+     * @return puestos favourites
+     */
+    public function viewFavourite(){
+        $user = Auth::user();
+        $puestos = DB::table('puesto')
+                ->join('favorito', 'puesto.idPuesto', '=', 'favorito.idpuesto')
+                ->where('favorito.idUsu',$user->idUsu)->paginate(8);
+        return view('home', ['puestos' => $puestos,'cesta' => $user->shoppingBasket()]) ;
+    }
+}
+
