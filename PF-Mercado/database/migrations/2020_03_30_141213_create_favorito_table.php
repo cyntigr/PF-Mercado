@@ -16,6 +16,7 @@ class CreateFavoritoTable extends Migration
         Schema::create('favorito', function (Blueprint $table) {
             $table->unsignedInteger('idUsu');
             $table->unsignedInteger('idPuesto');
+            $table->primary(['idUsu', 'idPuesto']);
         });
 
         Schema::table('favorito', function (Blueprint $table) {

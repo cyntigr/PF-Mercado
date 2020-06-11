@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Http\Controllers\Producto;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\ProductoPuesto ;
+use App\Models\Pedido ;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB ;
+
+class ProductoController extends Controller
+{
+    /**
+     * Redirect to view producto
+     * @return producto selected
+     * @return cesta count of pending orders
+     */
+    public function viewBuy(Request $req){
+        $idPro     = $req->input('idPro');
+        $producto  = ProductoPuesto::where('idProPues',$idPro)->first();
+        if(!Auth::guest()){
+            $user = Auth::user();
+            return view('cliente/compra', ['producto' => $producto,'cesta' => $user->shoppingBasket()]);
+        }
+        return view('cliente/compra', ['producto' => $producto]);
+    }
+
+    /**
+     * Add new pending order
+     * @param peso to product
+     * @param cantidad to product
+     * @param precio to product
+     * 
+     * @return view products 
+     */
+    public function add(Request $req){
+        $req->validate([
+            'cantidad'  => ['required', 'numeric'],
+            'peso'      => ['required', 'numeric'],
+        ]) ;
+
+        $idPro     = $req->input('idPro');
+        $producto  = ProductoPuesto::where('idProPues',$idPro)->first(); 
+
+        $cantidad = $req->input('cantidad');
+        $peso     = $req->input('peso');
+        $total    = $cantidad * $peso;
+        $precio   = $producto->precio /1000;
+        $totalPedido = $total * $precio ;
+        
+        Pedido::create([
+            'idUsu'     => Auth::user()->idUsu,
+            'idProPues' => $idPro,
+            'cantidad'  => $cantidad,
+            'peso'      => $peso,
+            'total'     => $totalPedido,
+            'enviado'   => false,
+            'pagado'    => false,
+        ]);
+        return redirect()->route('producto',['idPro' => $idPro]) ;
+    }
+
+
+}

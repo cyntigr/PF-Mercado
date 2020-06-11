@@ -2,19 +2,23 @@
     background-color: $yellow !important;
 }
 
+a.small{
+  width: 130px;
+}
+
 .logo{
-    width: 10%;
+  width: 90%;
 }
 
 @media (max-width: 996px) {
   .logo{
-      width: 13%;
+      width: 90%;
   }
 }
 
 @media (max-width: 768px) {
   .logo{
-      width: 16%;
+      width: 90%;
   }
 }
 
@@ -25,10 +29,11 @@
 }
 
 @media (max-width: 500px) {
-    .logo{
-        width: 20%;
-    }
+  .logo{
+      width: 90%;
+  }
 }
+
 
 .container.menu{
     width: 100%;

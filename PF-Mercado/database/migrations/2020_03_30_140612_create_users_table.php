@@ -29,10 +29,9 @@ class CreateUsersTable extends Migration
             $table->string('direccion',300);
             $table->bigInteger('tarjeta')->nullable();
             $table->string('caducidad',7)->nullable();
-            $table->integer('cvc')->nullable();
+            $table->Integer('cvc')->nullable();
             $table->string('foto',255);
             $table->string('nif',9)->nullable();
-            $table->string('apiKey',32)->nullable();
             $table->timestamps();
             
         });

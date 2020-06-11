@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable 
 { 
@@ -16,9 +17,7 @@ class User extends Authenticatable
      * 
      * Types of user in database
      */
-    private const ADMIN  = 1;
-    private const SELLER = 2;
-    private const CLIENT = 3;
+    private const TYPES = ['', 'admin', 'seller','client'] ;
 
 
     /**
@@ -59,46 +58,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Check if the user is admin
-     * 
-     * @return boolean
-     */
-    public function esAdministrador():boolean
-    {
-        return $this->tipo == User::ADMIN ;
-    }
-
-    /**
-     * Check if the user is seller
-     * 
-     * @return boolean
-     */
-    public function esVendedor():boolean
-    {
-        return $this->tipo == User::SELLER ;
-    }
-
-    /**
-     * Check if the user is client
-     * 
-     * @return boolean
-     */
-    public function esCliente():boolean
-    {
-        return $this->tipo == User::CLIENT ;
-    }
-
-
-    /**
-     * Return the route for the tipe indicated
-     * @param  int $tipe user  
-     * @return String with the path to which it is redirected 
-     */
-    public function path():String
-    {
-        return User::PATHS[$this->tipo] ;
-    }
 
     /**
     * Send the password reset notification.
@@ -109,5 +68,38 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+
+    /**
+     * Send number of orders in the shopping basket
+     * 
+     */
+    public function shoppingBasket(){
+        
+        return DB::table('pedido')->where('idUsu', $this->idUsu )->where('pagado',0)->count();
+    }
+
+    /**
+     * Check that you have a card
+     * to make the payment of order
+     * 
+     * @return boolean
+     */
+    public function checkCard():bool{
+        if( empty($this->tarjeta) || empty($this->cvc) || empty($this->caducidad)){
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check what type is the user 
+     * 
+     * @return boolean
+     */
+    public function checkType($type):bool{
+
+        return $this->idTipo == array_search($type, User::TYPES) ;
     }
 }

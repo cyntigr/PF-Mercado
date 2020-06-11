@@ -15,7 +15,7 @@ class FavoritoTableSeeder extends Seeder
         $faker = Faker\Factory::create() ;
         // Create data collection
         $data = [] ;
-        for($i=0; $i<20; $i++)
+        for($i=0; $i<5; $i++)
 			array_push($data, [
                 'idPuesto'   => $faker->numberBetween(1,15),
                 'idUsu'      => $faker->numberBetween(1,5)

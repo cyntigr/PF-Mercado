@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Cliente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class PerfilController extends Controller
 {
+
     /**
      * View Perfil user
      * @return view perfil
      */
-    public function vista(Request $req){
-    	return view('cliente/perfil') ;
+    public function view(Request $req){
+        $user = Auth::user();
+    	return view('cliente/perfil',['cesta' => $user->shoppingBasket()]) ;
     }
 
 
@@ -52,7 +56,6 @@ class PerfilController extends Controller
             $user->foto  =  $name;
         }
     	$user->save() ;
-    	 
     	return redirect()->route('perfil') ;
     }
 
@@ -63,9 +66,9 @@ class PerfilController extends Controller
      * 
      */
 
-     public function delete(){
+    public function delete(){
         $user = Auth::user();
         $user->delete();
     	return redirect()->route('home') ;
-     }
+    }
 }

@@ -83,3 +83,47 @@ a.page-link{
 .center{
     margin: auto;
 }
+
+.col-md-4.align-self-center{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.count{
+    margin-left: 1.5em;
+}
+
+a.blanco{
+    color:white !important;
+    text-decoration: none;
+}
+a.blanco:hover{
+    text-decoration: none;
+}
+
+.imgPedido{
+    width: 10rem !important;
+}
+a.rojo{
+    color:$red !important;
+    text-decoration: none;
+}
+a.naranja{
+    color:$yellow !important;
+    text-decoration: none;
+}
+#inputTotal{
+    width: 10rem !important;
+}
+
+.error{
+    width: 50%;
+}
+
+body.error-404{
+    background-color:#ffffff;
+}
+
+.row.move{
+    margin-left: 10rem !important;
+
+}
